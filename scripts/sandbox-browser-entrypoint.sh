@@ -46,6 +46,7 @@ CHROME_ARGS+=(
   "--disable-breakpad"
   "--disable-crash-reporter"
   "--metrics-recording-only"
+  "--disable-crashpad"
 )
 
 if [[ "${ALLOW_NO_SANDBOX}" == "1" ]]; then
