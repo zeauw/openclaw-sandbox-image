@@ -108,13 +108,15 @@ FROM common AS agent-personal
 USER root
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}
 
 ARG PACKAGES="khal vdirsyncer"
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ${PACKAGES} \
   && rm -rf /var/lib/apt/lists/*
+
+RUN echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"' > /etc/profile.d/linuxbrew.sh \
+  && chmod 644 /etc/profile.d/linuxbrew.sh
 
 USER linuxbrew
 
