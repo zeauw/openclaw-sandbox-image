@@ -115,6 +115,8 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends ${PACKAGES} \
   && rm -rf /var/lib/apt/lists/*
 
+USER sandbox
+
 RUN brew update \
   && brew install himalaya \
   && brew cleanup \
